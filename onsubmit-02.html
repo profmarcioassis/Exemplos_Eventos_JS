@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<script language="Javascript">
+			function submete() {
+				if (document.form1.campo1.value == "" || document.form1.campo2.value == "") {
+					alert('Os campos não foram preenchidos.');
+					return false;
+				}
+				else {alert('Campos preenchidos'); return true; }
+			}
+		</script>
+	</head>
+	<body bgcolor=white link=blue vlink=blue alink=blue>
+		<form name=form1 action="onsubmit-02.html" OnSubmit="return submete()">
+			Campo 1: <input type="text" size=10 name=campo1><br>
+			Campo 2: <input type="text" size=10 name=campo2>
+			<p><input type=submit>
+		</form>
+	</body>
+</html>

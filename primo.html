@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        resposta = "x";
+        while (resposta = "x") {
+            numero = window.prompt("Informe um número: ");
+            if (isNaN(numero))
+                alert("Valor inválido!");
+            else {
+                resposta = "z";
+                break;
+            }
+        }
+        numstop = 1;
+        vez = 0;
+        resto = 0;
+        while (numstop <= numero) {
+            resto = numero % numstop;
+            if (resto == 0)
+                vez++;
+            numstop++;
+        }
+        if (vez == 2)
+            document.write("<h1>" + "Este número é primo!" + "</h1>");
+        else
+            document.write("<h1>" + "Este número não é primo!" + "</h1>");
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript">
+			var nome;
+			var email;
+			var num=0;
+
+			function escrever(quadro){
+				info = "Usuário número: " + (++num) + "\n";
+				info += "Nome: " + nome + "\n";
+				info += "E-mail: " + email + "\n\n";
+				quadro.value += info;
+			}
+			
+			function data()
+			{
+				hoje = new Date();
+				dia = hoje.getDate();
+				mes = hoje.getMonth() + 1;
+				ano = hoje.getFullYear();
+				document.write ('<h3>Hoje: '+ dia + '/' + mes + '/' + ano + '</h3>');
+			}
+		</script>
+	</head>
+
+	<body>
+	
+		<div style="text-align: center;">
+			<script type="text/javascript">
+				data();
+			</script>
+		</div>
+	
+		<form>
+			<h2 style="text-align: center;"> Cadastro </h2>
+			<div style="text-align: center;">
+				<p> 
+				<input type="button" value="Digitar Nome" onclick="nome=prompt('Seu Nome', '')">
+				<input type="button" value="Digitar E-mail" onclick="email=prompt('Seu E-mail', '')">
+				<input type="button" value="Cadastrar" onclick="escrever(this.form.Area)">
+				<input type="reset" value="Limpar">
+				<p><textarea rows="10" cols="40" name="Area" disabled></textarea>
+			</div>
+		</form>
+	</body>
+</html>

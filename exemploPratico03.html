@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<script>
+			var nome;
+			var email;
+			var num=0;
+			function escrever(quadro){
+				nome = document.getElementById("Nome").value;
+				email = document.getElementById("Email").value;
+				if(nome == ""){
+					alert("Informe o nome.");
+					document.getElementById("Nome").focus();
+				} else if(email == ""){
+					alert("Informe o e-email.");
+					document.getElementById("Email").focus();
+				}
+				else{
+					info = "Usuário número: " + (++num) + "\n";
+					info += "Nome: " + nome + "\n";
+					info += "E-mail: " + email + "\n\n";
+
+					if (confirm("Confirma os dados: \n\n" + info)) {
+
+						quadro.value += info;
+					
+						document.getElementById("Nome").value = "";
+						document.getElementById("Email").value= "";
+						document.getElementById("Nome").focus();
+					}
+					else{
+						alert("Cadastro cancelado.");
+					}
+				}
+			}
+			
+			function data()
+			{
+				hoje = new Date();
+				dia = hoje.getDate();
+				mes = hoje.getMonth() + 1;
+				ano = hoje.getFullYear();
+				document.write ('<h3>Hoje: '+ dia + '/' + mes + '/' + ano + '</h3>')
+			}
+
+			function limpar(){
+				if (confirm("Deseja realmente limpar?")) {
+					nome="";
+					email="";
+					num=0;
+					document.getElementById("Nome").value="";
+					document.getElementById("Email").value="";
+					document.getElementById("Area").value="";
+					document.getElementById("Nome").focus();
+				}	
+			}
+			
+		</script>
+	</head>
+	<body>
+	
+		<div style="text-align: center;">
+			<script>
+				data();
+			</script>
+		</div>
+	
+		<form>
+			<h2 style="text-align: center;" > Cadastro de usuários </h2>
+                        <div style="text-align: center;">
+				<p> 
+				<label for="Nome">Nome: </label>
+				<input type="text" name="Nome" id="Nome">
+				<p>
+				<label for="Email">E-mail: </label>
+				<input type="email" name="Email" id="Email"> <br>
+				<p>
+				<input type="button" value="Cadastrar" onclick="escrever(this.form.Area)">
+				<input type="reset" value="Limpar" onclick="limpar()">
+				<p><textarea rows="10" cols="40" name="Area" id="Area" disabled></textarea>
+			</div>
+		</form>
+	</body>
+</html>

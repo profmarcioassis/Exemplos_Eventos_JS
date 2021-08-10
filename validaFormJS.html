@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<script language="javascript">
+			function validaForm(){
+				//Validar nome
+				d = document.cadastro;
+				if (d.nome.value == ""){
+					alert ("O campo " + d.nome.name + " deve ser preenchido!");
+					d.nome.focus();
+					return false;
+				}
+				
+				//Validar user
+				if (d.user.value == ""){
+					alert ("O campo " + d.user.name + " deve ser preenchido!");
+					d.user.focus();
+					return false;
+				}
+				//Validar senha
+				if (d.senha.value == ""){
+					alert ("O campo " + d.senha.name + " deve ser preenchido!");
+					d.senha.focus();
+					return false;
+				}
+				//Validar email
+				if (d.email.value == ""){
+					alert ("O campo " + d.email.name + " deve ser preenchido!");
+					d.email.focus();
+					return false;
+				}
+				//validar email (verifica��o de endere�o eletr�nico)
+				parte1 = d.email.value.indexOf("@");
+				parte2 = d.email.value.indexOf(".");
+				parte3 = d.email.value.length;
+				if(!(parte1 >= 3 && parte2 >= 6 && parte3 >= 9)){
+					alert ("O campo " + d.email.name + " deve conter um endere�o eletr�nico!");
+					d.email.focus();
+					return false;
+				}
+				//Validar telefone
+				if (d.telefone.value == ""){
+					alert ("O campo " + d.telefone.name + " deve ser preenchido!");
+					d.telefone.focus();
+					return false;
+				}
+				//Verificar se cont�m apenas n�meros
+				if (isNaN (d.telefone.value)){
+					alert ("O campo " + d.telefone.name + " deve conter apenas n�meros!");
+					d.telefone.focus();
+					return false;
+				}
+				
+				//Validar data de nascimento
+				erro=0;
+				hoje = new Date();
+				anoAtual = hoje.getFullYear();
+				barras = d.nasce.value.split("/");
+				if (barras.length == 3){
+					dia = barras [0];
+					mes = barras [1];
+					ano = barras [2];
+					resultado = (!isNaN(dia) && (dia > 0) && (dia < 32))
+								&& (!isNaN(mes) && (mes > 0) && (mes < 13))
+								&& (!isNaN(ano) && (ano.length == 4) && (ano <= anoAtual && ano >= 1900));
+					if (!resultado){
+						alert ("Formato de data inv�lido!");
+						d.nasce.focus();
+						return false;
+					}
+				} else {
+					alert ("Formato de data inv�lido!");
+					d.nasce.focus();
+					return false;
+				}
+				
+				//validar sexo
+				if (!d.sexo[0].checked && !d.sexo[1].checked){
+					alert("Escolha o sexo!");
+					return false;
+				}
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<form name="cadastro" action="teste.php" method="post" onsubmit="return validaForm()">
+			<table>
+				<tr>
+					<td>Nome: </td>
+					<td><input name="nome" type="text"></td>
+				</tr>
+				<tr>
+					<td>User: </td>
+					<td><input name="user" type="text"></td>
+				</tr>
+				<tr>
+					<td>Senha: </td>
+					<td><input name="senha" type="password"></td>
+				</tr>
+				<tr>
+					<td>e-mail: </td>
+					<td><input name="email" type="text"> (xxx@xx.xx)</td>
+				</tr>
+				<tr>
+					<td>Telefone: </td>
+					<td><input name="telefone" type="text"></td>
+				</tr>
+				<tr>
+					<td>Data de Nascimento: </td>
+					<td><input name="nasce" type="text"> (dd/mm/yyyy)</td>
+				</tr>
+				<tr>
+					<td>Sexo: </td>
+					<td><input name="sexo[]" type="radio"
+							   value=masculino id="sexo"> Masculino
+						<input name="sexo[]" type="radio"
+							   value=feminino id="sexo"> Feminino</td>
+				</tr>
+				<tr>
+					<td colspan=2 align=right><input name="enviar" type="submit" value="enviar" width="100%"></td>
+				</tr>
+		</form>
+	</body>
+</html>

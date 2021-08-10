@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			var texto = "O meu e-mail é: marcio@marcio.com.br";
+
+			//Procura por uma palavra que contenha uma ou mais sequências de algarismos (letras ou números) (\b[\w]+);
+			//Seguidos de um arroba (@);
+			//Seguido de outra sequência de um ou mais algarismos ([\w]+);
+			//Seguidos de um ponto (\.);
+			//Seguido de outra sequência de um ou mais algarismos ([\w]+).
+			var RegExp = /\b[\w]+@[\w]+\.[\w]+/;
+
+			if (texto.search(RegExp) != -1) {
+					document.write("E-mail localizado na posição: " + texto.search(RegExp));
+			} else {
+					document.write("E-mail não encontrado!");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

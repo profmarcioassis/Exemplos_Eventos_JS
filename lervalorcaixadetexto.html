@@ -1,0 +1,19 @@
+﻿<html>
+<head>
+    <script type="text/javascript">
+        function Exibir(form1) {
+            var testin = document.form1.input.value;
+            document.form1.output.value = testin;
+        }
+    </script>
+</head>
+<body>
+    <form name="form1">
+        <input type="text" name="input" value="">
+        Zona de texto de entrada<br>
+        <input type="button" name="botao" value="Exibir" onclick="Exibir(form1)"><br>
+        <input type="text" name="output" value="">
+        Zona de texto de saída
+    </form>
+</body>
+</html>

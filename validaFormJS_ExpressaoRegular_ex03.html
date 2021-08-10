@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			var texto = "testandoer@javascript.br";
+
+			/* Verificando se o texto recebido é iniciado por um ou mais algarismos (^[\w]+);
+			seguidos de arroba (@);
+			Seguido de um ou mais algarismos ([\w]+);
+			Seguido(s) de um ponto (\.);
+			Seguido (e finalizado) por um ou mais algarismos ou pontos ([\w|\.]+$);
+			*/
+			//var RegExp = /^[\w]+@[\w]+\.[\w|\.]+$/;
+			var RegExp = /^[\w]+@[\w]+\.(com)(\.br)?$/;
+
+			if (RegExp.test(texto) == true) {
+					document.write("Formato válido!");
+			} else {
+					document.write("Formato inválido!");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+
+

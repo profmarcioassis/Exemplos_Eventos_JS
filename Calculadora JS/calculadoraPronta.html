@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Calc</title>
+		
+		<script language="JavaScript">
+			var text = "";
+			var memory = 0;
+			function addtext(txt){
+				document.getElementById("display1").value = text;
+				// if (txt=="%") {
+				// 	document.getElementById("display1").value = text + " / 100";
+				// 	porc = eval(text + " / 100");
+				// 	text = eval(text +"*"+ porc);	
+				// 	document.getElementById("display2").value = text;
+				// }
+				//else{
+					text += txt;
+					document.getElementById("display2").value = text;
+				//}
+			}
+			
+			function calculateexpression() {
+				document.getElementById("display1").value = document.getElementById("display2").value;
+				document.getElementById("display2").value = eval(document.getElementById("display2").value);
+				text = document.getElementById("display2").value;
+				
+			}
+			
+			function porcentagem(){
+				alert("Em implementação");
+				//x=document.getElementById("display2").value;
+				
+				//document.getElementById("display2").value = eval(document.getElementById("display2").value);
+				//text = document.getElementById("display2").value;
+
+			}
+
+			function clearScreen(){
+				text = "";
+				document.getElementById("display1").value = "";
+				document.getElementById("display2").value = "";
+			}
+			
+			function clearExpression(){
+				document.getElementById("display2").value = "";				
+			}
+			
+			function invertOperation(){
+				document.getElementById("display2").value = (eval(document.getElementById("display2").value) * -1);
+				text = document.getElementById("display2").value;
+			}
+			
+			//MR pega o que está na memória e joga para o display2 e limpa o diplay1
+			function mr(){
+				document.getElementById("display1").value = "";
+				document.getElementById("display2").value = memory;				
+			}
+			
+			//MC limpa zera a variável memória
+			function mc(){
+				memory = 0;
+			}
+			
+			//MS calcula a espressão do display2 e a atribui para a variável memory
+			function ms(){
+				memory = eval(document.getElementById("display2").value);
+			}
+			
+			//M+ calcula o que está na variável memória + o que está no diplay2 e atribue novamente 
+			//para a variável memória
+			function mplus(){
+				memory += eval(document.getElementById("display2").value);
+			}
+			
+			//M- calcula o que está na variável memória - o que está no diplay2 e atribue novamente 
+			//para a variável memória
+			function mminus(){
+				memory -= eval(document.getElementById("display2").value);
+			}
+			
+			//
+			function invertResult(){
+				document.getElementById("display1").value = "1/" + document.getElementById("display2").value;
+				document.getElementById("display2").value = eval("1/" + document.getElementById("display2").value);
+				text = document.getElementById("display2").value;
+			}
+			
+			//Vx: Calcula a raiz quadrada do número passado como parâmetro
+			function sqrtOfResult(){
+				document.getElementById("display1").value = "sqrt("+document.getElementById("display2").value+")";
+				document.getElementById("display2").value = Math.sqrt(document.getElementById("display2").value);
+				text = document.getElementById("display2").value;
+			}
+			
+			function removeLast(){
+				document.getElementById("display2").value = document.getElementById("display2").value.substring(0, document.getElementById("display2").value.length - 1);
+				text = document.getElementById("display2").value;
+			}
+		</script>
+
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+		<style>
+			table{
+				width: 15%;
+			}
+			
+			td{
+				padding:1px;
+			}
+			
+			button{
+				width: 100%;
+			}
+			
+			input {
+				padding: 2px;
+				width: 100%;
+				margin: 0px;
+				text-align: right;
+				border-left: 1px solid #ccc;
+				border-right: 1px solid #ccc;
+				background-color: #fff;	
+			}
+			
+			#display1 { 
+				height: 18px;
+				border-top: 1px solid #ccc;
+				border-bottom: 0px;	
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				font-family: "Tahoma";
+				font-size:9px;
+				color: #666;
+			}
+
+			#display2 {
+				height: 30px;
+				border-top: 0px;
+				border-bottom: 1px solid #ccc;
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td colspan="5">
+					<input type="text" id="display1" >
+				</td>
+			</tr>
+				<tr>
+				<td colspan="5">
+					<input type="text" id="display2">
+				</td>
+
+			</tr>
+			<tr>
+				<td><button class="btn btn-info" onclick="mc()">MC</button></td>
+				<td><button class="btn btn-info" onclick="mr()">MR</button></td>
+				<td><button class="btn btn-info" onclick="ms()">MS</button></td>
+				<td><button class="btn btn-info" onclick="mplus()">M+</button></td>
+				<td><button class="btn btn-info" onclick="mminus()">M-</button></td>
+			</tr>
+			<tr>		
+				<td><button class="btn btn-danger" onclick="removeLast()"><-</button></td>
+				<td><button class="btn btn-danger" onclick="clearExpression()">CE</button></td>
+				<td><button class="btn btn-danger" onclick="clearScreen()">C</button></td>
+				<td><button class="btn btn-primary" onclick="invertOperation()">+/-</button></td>
+				<td><button class="btn btn-primary" onclick="sqrtOfResult()">Vx</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">7</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">8</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">9</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">/</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">%</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">4</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">5</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">6</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">*</button></td>
+				<td><button class="btn btn-primary" onclick="invertResult()">1/x</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">1</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">2</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">3</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">-</button></td>
+				<td rowspan="2"><button class="btn btn-warning" style="height:68px" onclick="calculateexpression()">=</button</td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn btn-default" onclick="addtext(this.innerHTML)">0</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">.</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">+</button></td>
+			</tr>
+		</table>
+	</body>
+</html>

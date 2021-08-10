@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			//Chave de código recuperada de um campo text, por exemplo:
+			var texto = "SL2K2T2HJH98759T0H825YWUT0HIEFHQ293485612985WEIOFH1T9H468VN234";
+
+			// Verificando apenas os segmentos T#H contidos em um texto recebido;
+			//Sendo que [\d] corresponde a um número qualquer.
+			var RegExp = /T[\d]H/g;
+
+			if (texto.match(RegExp) != null) {
+				var strExpressao = "";
+				for (var i = 0; i < texto.match(RegExp).length; i++) {
+					strExpressao = strExpressao + texto.match(RegExp)[i];
+				}
+				document.write ("RegExp extraiu da variável texto:<br>"+strExpressao);
+				document.write ("<br><br><br>");
+					//Retirando apenas os números de strExpressao:
+					var RegExp2 = /[\d]/g;
+					var strExpressao2 = "";
+					
+					if (strExpressao.match(RegExp2) != null) {
+						for (var i = 0; i < strExpressao.match(RegExp2).length; i++) {
+						strExpressao2 = strExpressao2 + strExpressao.match(RegExp2)[i];
+						}
+						
+						document.write ("RegExp2 extraiu da variável strExpressao:<br>"+strExpressao2);
+					}
+				
+			} else {
+					document.write("Nenhum texto ou expressão foram casados!");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+
+

@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			var texto = "000.000.000-00";
+
+			/* Verificando se o texto recebido é iniciado por três números (^[\d]{3});
+			seguidos de ponto (\.);
+			seguido de três números ([\d]{3});
+			seguidos de ponto (\.);
+			seguido de três números ([\d]{3});
+			seguidos de hífen (\-);
+			seguido (e finalizado) por dois números ([\d]{2}$);
+			*/
+			var RegExp = /^[\d]{3}\.[\d]{3}\.[\d]{3}\-[\d]{2}$/;
+
+			if (RegExp.test(texto) == true) {
+					document.write("Formato válido!");
+			} else {
+					document.write("Formato inválido!");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+
+

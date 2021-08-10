@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<script language="javascript">
+			function habilita(form) {
+				form.interesses[0].disabled = false;
+				form.interesses[1].disabled = false;
+				form.interesses[2].disabled = false;
+			}
+			function desabilita(form) {
+				form.interesses[0].disabled = true;
+				form.interesses[1].disabled = true;
+				form.interesses[2].disabled = true;
+			}
+		</script>
+	</head>
+
+	<body>
+		<form name="exemplo1">
+			Deseja se inscrever ao nosso boletim de novidades? <br>
+			<input type="radio" name="boletim" value="si" checked onClick="habilita(this.form)"> SIM, quero me
+			inscrever.
+			<input type="radio" name="boletim" value="no" onClick="desabilita(this.form)"> Não, obrigado.
+			<br><br>
+
+			Selecione os temas de seu interesse:<br>
+			<input type="checkbox" name="interesses" value="Arte e Cultura"> Arte e Cultura<br>
+			<input type="checkbox" name="interesses" value="Ciência">Ciência<br>
+			<input type="checkbox" name="interesses" value="Música">Música<br>
+		</form>
+
+	</body>
+
+</html>

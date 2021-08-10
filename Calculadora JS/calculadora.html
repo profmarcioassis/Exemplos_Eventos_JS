@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset = "utf8">
+		<title>Calculadora</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<style>
+			input{
+				width:99%;
+				background-color:white;
+				text-align:right;
+			}
+			button{
+				width:98%;
+				height:135%;
+			}
+			#visorDown{
+				height:30px;
+			}
+			button.igual{
+				height:115%;
+			}
+		</style>
+	</head>
+	<body>
+		<table align="center">
+			<tr>
+				<td colspan="5"><input disabled id="visorTop" type="text"></td>
+			</tr>
+			<tr>
+				<td colspan="5"><input disabled id="visorDown" type="text"></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-info">MC</button></td>
+				<td><button class="btn btn-info">MR</button></td>
+				<td><button class="btn btn-info">MS</button></td>
+				<td><button class="btn btn-info">M+</button></td>
+				<td><button class="btn btn-info">M-</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-warning">&larr;</button></td>
+				<td><button class="btn btn-info"onclick="limparUltimo()">CE</button></td>
+				<td><button class="btn btn-info"onclick="limpar()">C</button></td>
+				<td><button class="btn btn-success"onclick="maisMenos()">&plusmn;</button></td>
+				<td><button class="btn btn-success">&radic;</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default"onclick="num(7)">7</button></td>
+				<td><button class="btn btn-default"onclick="num(8)">8</button></td>
+				<td><button class="btn btn-default"onclick="num(9)">9</button></td>
+				<td><button class="btn btn-success"onclick="operacao('/')">/</button></td>
+				<td><button class="btn btn-success">%</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default"onclick="num(4)">4</button></td>
+				<td><button class="btn btn-default"onclick="num(5)">5</button></td>
+				<td><button class="btn btn-default"onclick="num(6)">6</button></td>
+				<td><button class="btn btn-success"onclick="operacao('*')">*</button></td>
+				<td><button class="btn btn-success">1/x</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default"onclick="num(1)">1</button></td>
+				<td><button class="btn btn-default"onclick="num(2)">2</button></td>
+				<td><button class="btn btn-default"onclick="num(3)">3</button></td>
+				<td><button class="btn btn-success"onclick="operacao('-')">-</button></td>
+				<td rowspan="2"><button class="igual btn btn-danger"onclick="igual()">=</button></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn btn-default"onclick="num(0)">0</button></td>
+				<td><button class="btn btn-success"onclick="num(',')">,</button></td>
+				<td><button class="btn btn-success"onclick="operacao('+')">+</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default" onclick="maisMais()">++</button></td>
+				<td><button class="btn btn-default" onclick="fatorial()">!</button></td>
+				<td><button class="btn btn-default" onclick="meninoOuMenina()">+/-</button></td>
+				<td><button class="btn btn-default">RO</button></td>
+				<td><button class="btn btn-default" onclick="nt()">NT</button></td>
+			</tr>
+		</table>
+		<script type="text/javascript">
+			var visorTop=document.getElementById("visorTop");
+			var visorDown=document.getElementById("visorDown");
+			var textop ="";
+			function num(n){
+				visorDown.value += n;
+			}
+			function operacao(s){
+				var v = visorDown.value;
+				visorDown.value = "";
+				textop = v+s;
+				visorTop.value=textop;
+			}
+			function igual(){
+				textop += visorDown.value;
+				visorDown.value = eval(textop);
+				visorTop.value="";
+			}
+			function limpar(){
+				visorDown.value = "";
+				visorTop.value = "";
+				visorDown.style.background="white";
+				visorDown.style.color="black";
+				}
+			function limparUltimo(){
+				visorDown.value = "";
+			}
+			function maisMais(){
+				visorTop.value=visorDown.value;
+				var soma=0;
+				var x = parseInt(visorDown.value);
+				for(var i=1; i<=x; i++){
+					soma += i;
+				}
+				visorDown.value=soma;
+			}
+			function fatorial(){
+				visorTop.value="fact("+visorDown.value+")";
+				var fat=1;
+				var x = parseInt(visorDown.value);
+				for(var i=x; i>0; i--){
+					fat = fat*i;
+				}
+				visorDown.value=fat;
+			}
+			function meninoOuMenina(){
+				visorTop.value=visorDown.value;
+				if(visorDown.value>=0){
+					visorDown.value="Positivo";
+				}else{
+					visorDown.value="Negativo";
+				}
+			}
+			function maisMenos(){
+				visorDown.value=visorDown.value*(-1);
+			}
+			function nt(){
+				visorTop.value=visorDown.value;
+				if(visorDown.value>=60){
+					visorDown.value="Aprovado";
+					visorDown.style.background="green";
+					visorDown.style.color="white";
+				}else{
+					visorDown.value="Reprovado";
+					visorDown.style.background="red";
+					visorDown.style.color="white";
+				}
+			}
+			
+		</script>
+	</body>
+</html>
+	

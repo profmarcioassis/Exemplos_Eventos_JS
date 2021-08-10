@@ -1,0 +1,45 @@
+﻿<html>
+<head>
+<title> Treinamento de Javascript </title>
+
+<script type="text/javascript">
+    function horas() {
+        camada = document.getElementById('relogio');
+
+        hoje = new Date();
+
+        hora = hoje.getHours();
+        if (hora <= 9) { hora = "0" + hora; }
+
+        minuto = hoje.getMinutes();
+        if (minuto <= 9) { minuto = "0" + minuto; }
+
+        segundo = hoje.getSeconds();
+        if (segundo <= 9) { segundo = "0" + segundo; }
+
+        camada.innerHTML = hora + ":" + minuto + ":" + segundo;
+
+        setTimeout("horas()", 1000);
+    }
+</script>
+
+<style>
+#relogio{position: relative; /*tipo de posicionamento*/
+width: 100px; /*largura da DIV*/
+height: 20px; /*altura da DIV*/
+margin-left: auto; /*margem a esquerda*/
+margin-right: auto; /*margem a direita*/
+float: left; /*flutuar a esquerda*/
+border: 1px solid #ccc; /*borda da DIV*/
+text-align: center; /*alinhamento do texto*/
+</style>
+
+</head>
+<body onload="horas()">
+
+<div id="relogio">
+
+</div>
+
+</body>
+</html> 

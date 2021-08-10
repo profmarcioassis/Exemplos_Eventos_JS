@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+        <script language="Javascript">
+            //função que trabalha apenas com 2 radio para exibir ou ocultar uma div
+            $(document).ready(function () {
+                $('input[id="radio-exibir-ou-esconder"]').change(function () {
+                    if ($('input[id="radio-exibir-ou-esconder"]:checked').val() === "Sim") {
+                        $('#div-exibir-ou-esconder').show();
+                    } else {
+                        $('#div-exibir-ou-esconder').hide();
+                    }
+                });
+
+                // função para exibir ou ocultar várias divs de acordo com a opção escolhida e 3 radios
+                $('input[id="exibir-ou-esconder-divs"]').change(function () {
+                    if ($('input[id="exibir-ou-esconder-divs"]:checked').val() === "div-radio-1") {
+                        $('#div-radio-1').show();
+                        $('#div-radio-2').hide();
+                        $('#div-radio-3').hide();
+                    } else if ($('input[id="exibir-ou-esconder-divs"]:checked').val() === "div-radio-2") {
+                        $('#div-radio-1').hide();
+                        $('#div-radio-2').show();
+                        $('#div-radio-3').hide();
+                    } else if ($('input[id="exibir-ou-esconder-divs"]:checked').val() === "div-radio-3") {
+                        $('#div-radio-1').hide();
+                        $('#div-radio-2').hide();
+                        $('#div-radio-3').show();
+                        //$('#txt-div-radio-3').attr('readonly', 'readonly');
+                        //$('#txt-div-radio-3').prop('readonly', 'true');
+                        //$('#txt-div-radio-3').attr('disabled', 'disabled');
+                        //$('#txt-div-radio-3').prop('disabled', 'true');
+                        
+                        
+                    } else {
+                        $('#div-radio-1').hide();
+                        $('#div-radio-2').hide();
+                        $('#div-radio-3').hide();
+                    }
+                });
+
+                //função executada quando mudar o select
+                $("#select").on("change", function () {
+                    var selectValor = "#" + $(this).val();
+                    //alert (selectValor);
+                    //oculta todas as div que estão dentro da divPai
+                    $("#div-pai-ex-select").children("div").hide();
+                    //exibe a div de acordo com o select escolhido
+                    //é interessante ter o mesmo nome, para não ter que tratar separadamente
+                    $("#div-pai-ex-select").children(selectValor).show();
+
+                });
+
+            });
+        </script>
+
+        <style>
+            /* esconder a div do primero exemplo */
+            #div-exibir-ou-esconder{
+                display: none;
+            }
+
+            /* esconde as divs do segundo exemplo */
+            #div-pai-radio div {
+                display: none;
+            }
+
+            /* enconder as divs do exemplo select */
+            #div-pai-ex-select div {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body style="margin: 20px;">
+
+        <h2>Apenas exibir ou esconder uma div de acordo com o radio</h2>
+        <div id="exibir-ou-esconder-apenas">
+            <input type="radio" name="radio-exibir-ou-esconder" id="radio-exibir-ou-esconder" value="Sim">Exibir
+            <input type="radio" name="radio-exibir-ou-esconder" id="radio-exibir-ou-esconder" value="Nao">Esconder
+            <div id="div-exibir-ou-esconder">
+                Aqui vem os dados que é para esconder ou aparecer
+            </div>
+        </div>
+        <hr>
+
+        <h2>Exibir ou esconder divs de acordo com a opção marcada no radio</h2>
+        <div>
+            <div id="div-radios">
+                <input type="radio" name="exibir-ou-esconder-divs" id="exibir-ou-esconder-divs"
+                    value="div-radio-1">Exibir div 1
+                <input type="radio" name="exibir-ou-esconder-divs" id="exibir-ou-esconder-divs"
+                    value="div-radio-2">Exibir div 2
+                <input type="radio" name="exibir-ou-esconder-divs" id="exibir-ou-esconder-divs"
+                    value="div-radio-3">Exibir div 3
+            </div>
+
+            <div id="div-pai-radio">
+                <div id="div-radio-1">
+                    Conteúdo da Div 1 <br>
+                    <input type="text" id="txt-div-radio-1" placeholder="Input div radio 1">
+                </div>
+                <div id="div-radio-2">
+                    Conteúdo da Div 2<br>
+                    <input type="text" id="txt-div-radio-2" placeholder="Input div radio 2">
+                </div>
+                <div id="div-radio-3">
+                    Conteúdo da Div 3<br>
+                    <input type="text" id="txt-div-radio-3" placeholder="Input div radio 3">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <h2>Ocultar div de acordo com o select</h2>
+        <select name="select" id="select">
+            <option value="">Selecione...</option>
+            <option value="div-select-1">Div 1</option>
+            <option value="div-select-2">Div 2</option>
+            <option value="div-select-3">Div 3</option>
+        </select>
+
+        <h3>Irá aparecer a div a seguir</h3>
+        <div id="div-pai-ex-select">
+            <div id="div-select-1">
+                Conteúdo da Div 1
+                <br>
+                <input type="text" id="txt-div-select-1" placeholder="Input da div select 1">
+            </div>
+            <div id="div-select-2">
+                Conteúdo da Div 2
+                <br>
+                <input type="text" id="txt-div-select-2" placeholder="Input da div select 2">
+            </div>
+            <div id="div-select-3">
+                Conteúdo da Div 3
+                <br>
+                <input type="text" id="txt-div-select-3" placeholder="Input da div select 3">
+            </div>
+        </div>
+    </body>
+</html>

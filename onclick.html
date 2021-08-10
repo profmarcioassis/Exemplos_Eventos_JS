@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<script type="Javascript">
+			function mensagem(){
+				window.alert("Você clicou neste campo.");
+			}
+		</script>
+	</head>
+	<body>
+		<a href="onclick.html" onclick="mensagem()">
+			<i> Link </i> comum
+		</a> <br>
+		<form>
+			<input name="nome" type="hidden" onclick="mensagem()"> <i>Radio</i><br>
+			<input name="nome" type="checkbox" onclick="mensagem()"> <i>Checkbox</i><br>
+			<input name="nome" type="reset" onclick="mensagem()"><br>
+			<input name="nome" type="submit" onclick="mensagem()"><br>
+		</form>
+	</body>
+</html>

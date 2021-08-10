@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Javascript</title>
+        <script>
+            function Ascender() {
+                document.getElementById('lampada').src = 'pic_bulbon.gif';
+            }
+            function Apagar() {
+                document.getElementById('lampada').src = 'pic_bulboff.gif';
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <h2 id="id_h2">O que você pode fazer com Javascript?</h2>
+
+        <p>Neste exemplo, mudamos o valor do atributo src (origem) de uma imagem.</p>
+
+        <button onclick="Ascender()">On</button>
+
+        <img id="lampada" name="lampada" src="pic_bulboff.gif" style="width:100px">
+
+        <button onclick="Apagar()">Off</button>
+        <br>
+    </body>
+
+</html>

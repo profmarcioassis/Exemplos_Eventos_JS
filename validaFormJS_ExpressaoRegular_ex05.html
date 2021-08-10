@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			//Frase recuperada de um campo text, por exemplo:
+			var texto = "Eu nasci em 01/23/4567";
+
+			/* Verificando se o texto recebido contém dois números (([\d]{2})): veja que estão entre parênteses;
+			seguidos de barra (\/);
+			Seguida de dois números (([\d]{2})): veja que estão entre parênteses;
+			seguidos de barra (\/);
+			Seguida de quatro números (([\d]{4})): veja que estão entre parênteses;
+
+			Os parênteses determinam os grupos!
+			*/
+			var RegExp = /([\d]{2})\/([\d]{2})\/([\d]{4})/;
+
+			if (texto.match(RegExp) != null) {
+					document.write("Propriedades do método match: <br>"+
+					"Frase: "+texto.match(RegExp).input+"<br>"+
+					"Posição do 1º caractere: "+texto.match(RegExp).index+"<br>"+
+					"Posição do último caractere: "+texto.match(RegExp).lastIndex+"<br>"+
+					"Resultado da ER: "+texto.match(RegExp)[0]+"<br>"+
+					"Primeiro grupo: "+texto.match(RegExp)[1]+"<br>"+
+					"Segundo grupo: "+texto.match(RegExp)[2]+"<br>"+
+					"Terceiro grupo: "+texto.match(RegExp)[3]+"<br>");
+			} else {
+					document.write("Nenhum texto ou expressão foram casados!");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+
+

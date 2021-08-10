@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+		<script>
+			function digamePropriedades(){
+				var texto
+				texto = "O número de opções do select: " + document.formul.minhaSelect.length;
+				var indice = document.formul.minhaSelect.selectedIndex;
+				texto += "\nIndice da opção escolhida: " + indice;
+				var valor = document.formul.minhaSelect.options[indice].value;
+				texto += "\nValor da opção escolhida: " + valor;
+				var textoEscolhido = document.formul.minhaSelect.options[indice].text;
+				texto += "\nTexto da opção escolhida: " + textoEscolhido;
+				alert(texto);
+			} 
+		</script>
+	</head>
+	<body>
+		<form name="formul">
+			Valoracao sobre este web:
+			<select name="minhaSelect">
+				<option value="10">Muito bom
+				<option value="5" selected>Regular
+				<option value="0">Muito ruim
+			</select>
+			<br><br>
+			<input type=button value="Digame propriedades" onclick="digamePropriedades()">
+		</form> 
+	</body>
+</html>
+
+

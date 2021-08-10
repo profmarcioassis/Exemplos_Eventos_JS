@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Calc</title>
+		
+		<script language="JavaScript">
+			//declaração das variáveis globais
+			var text = "";
+			//var memory = 0;
+
+			function addtext(txt){
+				text += txt;
+				document.getElementById("display2").value = text;
+			}
+			
+			function calculateexpression() {
+				document.getElementById("display1").value = document.getElementById("display2").value;
+				document.getElementById("display2").value = eval(document.getElementById("display2").value);
+				text = document.getElementById("display2").value;
+			}
+			
+			function clearScreen(){ //C
+				text = "";
+				document.getElementById("display1").value = "";
+				document.getElementById("display2").value = "";
+			}
+			
+			function clearExpression(){ //CE
+				document.getElementById("display2").value = "";				
+			}
+
+			function removeLast(){
+				document.getElementById("display2").value = document.getElementById("display2").value.substring(0, document.getElementById("display2").value.length - 1);
+				text = document.getElementById("display2").value;
+			}
+			
+			
+		</script>
+
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+		<style type="text/css">
+			table{
+				width: 15%;
+			}
+			
+			td{
+				padding:1px;
+			}
+			
+			button{
+				width: 100%;
+			}
+			
+			input {
+				padding: 2px;
+				width: 100%;
+				margin: 0px;
+				text-align: right;
+				border-left: 1px solid #ccc;
+				border-right: 1px solid #ccc;
+				background-color: #fff;	
+			}
+			
+			#display1 { 
+				height: 18px;
+				border-top: 1px solid #ccc;
+				border-bottom: 0px;	
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				font-family: "Tahoma";
+				font-size:9px;
+				color: #666;
+			}
+
+			#display2 {
+				height: 30px;
+				border-top: 0px;
+				border-bottom: 1px solid #ccc;
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td colspan="4">
+					<input type="text" id="display1" >
+				</td>
+			</tr>
+				<tr>
+				<td colspan="4">
+					<input type="text" id="display2">
+				</td>
+
+			</tr>
+			<tr>		
+				<td><button class="btn btn-danger" onclick="clearScreen()">C</button></td>
+				<td><button class="btn btn-danger" onclick="clearExpression()">CE</button></td>
+				<td><button class="btn btn-danger" onclick="removeLast()"><-</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">/</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">7</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">8</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">9</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">*</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">4</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">5</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">6</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">-</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">1</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">2</button></td>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">3</button></td>
+				<td rowspan="2"><button class="btn btn-primary" style="height: 68px" onclick="addtext(this.innerHTML)">+</button></td>
+			</tr>
+			<tr>
+				<td><button class="btn btn-default" onclick="addtext(this.innerHTML)">0</button></td>
+				<td><button class="btn btn-primary" onclick="addtext(this.innerHTML)">.</button></td>
+				<td><button class="btn btn-warning" onclick="calculateexpression()">=</button></td>
+			</tr>
+		</table>
+	</body>
+</html>

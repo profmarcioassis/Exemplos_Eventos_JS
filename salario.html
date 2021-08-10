@@ -1,0 +1,28 @@
+﻿<html>
+<head>
+<title>Cálculo do Salário</title>
+
+</head>
+<body>
+<h1>Salario</h1>
+<script type="text/javascript">
+    salario = window.prompt("Entre com o Salário bruto!", " ");
+    Dependentes = window.prompt("Insira o numero de dependentes!", " ");
+    if (salario <= 1200)
+        imposto = 0;
+    else if (salario > 1200)
+        imposto = salario * 27.5;
+    if (salario <= 1000)
+        inss = salario * 0.05;
+    else
+        inss = salario * 0.07;
+    Salarioliq = salario - (imposto + inss);
+
+    document.write("Salário Bruto: " + salario + "<br>");
+    document.write("Imposto de Renda: " + imposto + "<br>");
+    document.write("INSS: " + inss + "<br>");
+    document.write("Salário Liquido: " + Salarioliq + "<br>");
+    document.write("dependentes: " + dependentes + "<br>");
+ </script>
+</body>
+</html>

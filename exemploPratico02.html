@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<script>
+			//declaração das variáveis globais	
+			var nome;
+			var email;
+			var num=0;
+			//função para receber os dados de entrada, concatenar com o já cadastrado no
+			//textarea e exibir novamente, após confirmação do usuário
+			function escrever(quadro){
+				if (nome!=null || email!=null) {
+					info = "Usuário número: " + (++num) + "\n";
+					info += "Nome: " + nome + "\n";
+					info += "E-mail: " + email + "\n\n";
+
+					flag = confirm('Confirma os dados?\n\n' + info);
+					if (flag) {
+						quadro.value+=info;
+
+					}
+					else{
+						alert('Cadastro cancelado.\n');
+						num--;
+						nome=email="";
+					}
+				}else{
+					alert("Nome ou e-mail em branco.");
+				}
+
+			}
+
+			//Função para exibir a data atual no formato dd/mm/yyyy
+			function data(){
+				hoje = new Date();
+				dia = hoje.getDate();
+				mes = hoje.getMonth()+1;
+				ano = hoje.getFullYear();
+				document.write ('<h3>Hoje: '+ dia + '/' + mes + '/' + ano + '</h3>')
+			}
+
+			//Função para limpar o formulário e resetar as variáveis
+			function limpar(quadro){
+				if (confirm("Deseja realmente limpar?")) {
+					nome="";
+					email="";
+					num=0;
+					quadro.value="";
+				}	
+			}
+		</script>
+	</head>
+	<body>
+	
+		<div style="text-align: center;">
+			<script>
+				data();
+			</script>
+		</div>
+	
+		<form>
+                    <h2 style="text-align: center;"> Cadastro </h2>
+			<div style="text-align: center;">
+				<p> <input type="button" value="Digitar Nome" onclick="nome=prompt('Seu Nome', '')">
+				<input type="button" value="Digitar E-mail" onclick="email=prompt('Seu Email', '')">
+				<input type="button" value="Cadastrar" onclick="escrever(this.form.Area)">
+
+				<input type="button" name="Limpar" value="Limpar" onclick="limpar(this.form.Area)">
+				
+				<p><textarea rows="10" cols="40" name="Area" disabled></textarea>
+			</div>
+		</form>
+	</body>
+</html>

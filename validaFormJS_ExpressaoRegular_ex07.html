@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			//CPF recuperada de um campo text, por exemplo:
+			var texto = "00000000000";
+
+			/* Dividindo por grupos:
+			Verificando se a expressão é iniciada por 3 números (^([\d]{3}));
+			seguidos de 3 números (([\d]{3}));
+			seguidos de 3 números (([\d]{3}));
+			seguidos de 2 números e finalizada (([\d]{2})$);
+			*/
+			var RegExp = /^([\d]{3})([\d]{3})([\d]{3})([\d]{2})$/;
+
+				if (texto.search(RegExp) != -1) {
+					var mascCPF = texto.replace(RegExp,"$1.$2.$3-$4");
+					document.write (mascCPF);
+				} else {
+					document.write("Nenhum texto ou expressão foram casados!");
+				}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+
+

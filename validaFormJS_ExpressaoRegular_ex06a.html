@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			//Chave de código recuperada de um campo text, por exemplo:
+			var texto = "ÇASLDFE2FLAHÇS0DGKLJEIQWOE0IFJSDFKQÇLW9EKFJ";
+
+			// '\g' explicação no slide 203.
+			//Pegando apenas os números contidos em um texto recebido:
+			var RegExp = /[\d]/g;
+
+			if (texto.match(RegExp) != null) {
+				var strExpressao = "";
+				for (var i = 0; i < texto.match(RegExp).length; i++) {
+					strExpressao = strExpressao + texto.match(RegExp)[i];
+				}
+				document.write (strExpressao);
+			} else {
+					document.write("Nenhum texto ou expressão foram casados!");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+
+
